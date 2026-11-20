@@ -77,12 +77,16 @@ class TouchMonitorApp : Application() {
     }
 
     private fun writePlugType(plugType: Int) {
-        val wired =
-            plugType == BatteryManager.BATTERY_PLUGGED_AC ||
-                plugType == BatteryManager.BATTERY_PLUGGED_USB
-        val wireless = plugType == BatteryManager.BATTERY_PLUGGED_WIRELESS
-        touchHal.writeNode(CHARGE_DETECT_NODE, if (wired) "1" else "0")
-        touchHal.writeNode(WIRELESS_CHARGE_DETECT_NODE, if (wireless) "1" else "0")
+        when (plugType) {
+            BatteryManager.BATTERY_PLUGGED_AC,
+            BatteryManager.BATTERY_PLUGGED_USB -> touchHal.writeNode(CHARGE_DETECT_NODE, "1")
+            BatteryManager.BATTERY_PLUGGED_WIRELESS ->
+                touchHal.writeNode(WIRELESS_CHARGE_DETECT_NODE, "1")
+            else -> {
+                touchHal.writeNode(CHARGE_DETECT_NODE, "0")
+                touchHal.writeNode(WIRELESS_CHARGE_DETECT_NODE, "0")
+            }
+        }
     }
 
     private fun writeRotation(rotation: Int) {
