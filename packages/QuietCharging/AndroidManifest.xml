@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.lineageos.quietcharging">
+
+    <application
+        android:name=".QuietChargingApp"
+        android:label="@string/quiet_charging_title"
+        android:persistent="true"
+        android:usesNonSdkApi="true">
+        <service
+            android:name=".QuietChargingTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_quiet_charging"
+            android:label="@string/quiet_charging_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+    </application>
+</manifest>

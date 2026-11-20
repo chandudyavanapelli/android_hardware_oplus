@@ -1,0 +1,7 @@
+type quiet_charging_app, domain, coredomain;
+
+app_domain(quiet_charging_app)
+
+hal_client_domain(quiet_charging_app, vendor_hal_oplus_charger)
+
+allow quiet_charging_app app_api_service:service_manager find;
