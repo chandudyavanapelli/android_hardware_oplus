@@ -18,6 +18,7 @@
     <!-- Sensor types -->
     <string name="pickup_sensor_type"></string>
     <string name="pocket_sensor_type"></string>
+    <string name="aod_light_sensor_type"></string>
 
     <!-- Sensor trigger values -->
     <item name="pickup_sensor_value" format="float" type="dimen">1.0</item>
